@@ -34,15 +34,23 @@
 
 ;;; Code:
 
+(require 'eww)
+(require 'puny)
+(require 'json)
+(require 'subr-x)
+(require 'xwidget)
+
 (defgroup xwwp nil
   "`xwidget-webkit' browser enhancement suite."
   :group 'convenience)
 
+(defcustom xwwp-search-prefix "https://google.com/search?q="
+  "Prefix URL to search engine."
+  :group 'xwwp
+  :type 'string)
 
-
-(require 'json)
-(require 'subr-x)
-(require 'xwidget)
+(defvar xwwp-js-scripts '()
+  "An  alist of list of javascript function.")
 
 (defun xwwp-css-make-class (class style)
   "Generate a css CLASS definition from the STYLE alist."
@@ -90,8 +98,6 @@ null;
 (defun xwwp-js-lisp-to-js (identifier)
   "Convert IDENTIFIER from Lisp style to javascript style."
   (replace-regexp-in-string "-" "_" (if (symbolp identifier) (symbol-name identifier) identifier)))
-
-(defvar xwwp-js-scripts '() "An  alist of list of javascript function.")
 
 (defun xwwp-js-register-function (ns-name name js-script)
   "Register javascript function NAME in namespace NS-NAME with body JS-SCRIPT."
@@ -162,13 +168,6 @@ Interactively, URL defaults to the string looking like a url around point."
              (switch-to-buffer-other-window (xwidget-buffer (xwidget-webkit-current-session)))))))
 
 ;;; Adapted from EWW code to provide a DWIM style XWWP command
-(require 'eww)
-(require 'puny)
-
-(defcustom xwwp-search-prefix "https://google.com/search?q="
-  "Prefix URL to search engine."
-  :group 'xwwp
-  :type 'string)
 
 (defun xwwp (url &optional arg)
   "Fetch URL and render the page.
