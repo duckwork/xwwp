@@ -201,19 +201,5 @@ the default Webkit buffer."
     (setq url (url-recreate-url parsed)))
   (xwwp-browse-url-other-window url (eq arg 4)))
 
-
-;; Local Variables:
-;; eval: (mmm-mode)
-;; eval: (mmm-add-group 'elisp-js '((elisp-rawjs :submode js-mode
-;;                                               :face mmm-code-submode-face
-;;                                               :delimiter-mode nil
-;;                                               :front "xwwp--js \"" :back "\" js--")
-;;                                  (elisp-defjs :submode js-mode
-;;                                               :face mmm-code-submode-face
-;;                                               :delimiter-mode nil
-;;                                               :front "xwwp-defjs .*\n.*\"\"\n" :back "\")\n")))
-;; mmm-classes: elisp-js
-;; End:
-
 (provide 'xwwp)
 ;;; xwwp.el ends here

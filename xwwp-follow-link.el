@@ -243,18 +243,5 @@ LINKS maps a numerical ID to an array of form [link-text, link-uri]"
     (xwwp-js-inject xwidget 'follow-link)
     (xwwp-follow-link-fetch-links xwidget #'xwwp-follow-link-callback)))
 
-;; Local Variables:
-;; eval: (mmm-mode)
-;; eval: (mmm-add-group 'elisp-js '((elisp-rawjs :submode js-mode
-;;                                               :face mmm-code-submode-face
-;;                                               :delimiter-mode nil
-;;                                               :front "xwwp--js \"" :back "\" js--")
-;;                                  (elisp-defjs :submode js-mode
-;;                                               :face mmm-code-submode-face
-;;                                               :delimiter-mode nil
-;;                                               :front "xwwp-js-def .*\n.*\"\"\n" :back "\")\n")))
-;; mmm-classes: elisp-js
-;; End:
-
 (provide 'xwwp-follow-link)
 ;;; xwwp-follow-link.el ends here
