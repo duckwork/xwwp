@@ -181,7 +181,7 @@ the default Webkit buffer."
 			              (if uris (format " (default %s)" (car uris)) "")
 			              ": ")))
      (list (read-string prompt nil 'eww-prompt-history uris)
-           (prefix-numeric-value current-prefix-arg))))
+           current-prefix-arg)))
   (setq url
         (let ((eww-search-prefix xwwp-search-prefix))
           (eww--dwim-expand-url url)))
@@ -198,7 +198,7 @@ the default Webkit buffer."
       (while (string-match "\\`/[.][.]/" (url-filename parsed))
         (setf (url-filename parsed) (substring (url-filename parsed) 3))))
     (setq url (url-recreate-url parsed)))
-  (xwwp-browse-url-other-window url (eq arg 4)))
+  (xwwp-browse-url-other-window url arg))
 
 (provide 'xwwp)
 ;;; xwwp.el ends here
